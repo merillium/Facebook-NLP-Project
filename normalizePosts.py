@@ -21,14 +21,15 @@ def change_stopwords(words_list = words_list_keep):
 	for word in words_list:
 		try:
 			stopword_list.remove(word) 
-			print(word, 'removed')
+			print(word, 'removed from stopwords list')
 		except:
 			continue
 
 change_stopwords(words_list_keep)
 
 # import training data
-input_file = 'raw_train_df.csv'
+input_file = './data/raw_df.csv'
+output_file = './data/normalized_df.csv'
 
 train_df = pd.read_csv(input_file, encoding='utf-8')
 train_df = train_df.fillna('')
@@ -38,12 +39,15 @@ train_df['shared_text'] = train_df['shared_text'].apply(lambda x: x.split('\n', 
 # n-gram tagging so that proper nouns stay together
 
 # this function removes various types of left/right quote marks
-# and also replaces single left/right quote marks with regular ones
+# and also replaces single left/right quote marks with regular ones 
 def fix_quotes(text):
 	pattern = r'["“”„”«»]'
 	text = re.sub(pattern, '', text)
 	pattern = r'[‛’]'
 	text = re.sub(pattern, '\'', text)
+	# replaces dashes with spaces so that strong-willed --> strongwilled doesn't happen
+	pattern = r'[-—]'
+	text = re.sub(pattern, ' ', text)
 	return text
 
 # NOTE: this does not work for contractions inside quotations
@@ -96,21 +100,6 @@ def replace_numbers(words):
 			new_words.append(word)
 	return new_words
 
-# NOTE: convert numbers to text before proceeding with this step? 
-# we lemmatize nouns, verbs, adjectives
-def lemmatize(words):
-	lemmatizer = WordNetLemmatizer()
-	lemmatized_words = []
-	for word, tag in pos_tag(words):
-		if tag.startswith('NN'):
-			pos = 'n'
-		elif tag.startswith('VB'):
-			pos = 'v'
-		else:
-			pos = 'a'
-		lemmatized_words.append(lemmatizer.lemmatize(word, pos))
-	return lemmatized_words
-
 # needed to lemmatize the first element of the word tuple (string, POS)
 # may want to adjust lemmatization depending on POS (noun, verb, adjective)
 def lemmatize(words):
@@ -144,6 +133,8 @@ print('after expanding contractions...')
 train_df['text'] = train_df['text'].apply(lambda x: remove_special_characters(x))
 print('removing special characters...')
 
+## reposts with duplicate text may need to be removed: take the average of likes, comments, shares
+
 # train_df['text'] = train_df['text'].apply(lambda x: remove_stopwords(x))
 # print('after removing stop words...', train_df.text[139])
 
@@ -153,4 +144,4 @@ print('removing special characters...')
 # train_df['text'] = train_df['text'].apply(lambda x: lemmatize(x))
 # print('after lemmatizing...', train_df.text[139])
 
-train_df.to_csv('normalized_train_df.csv', index = False, encoding='utf-8')
+train_df.to_csv(output_file, index = False, encoding='utf-8')

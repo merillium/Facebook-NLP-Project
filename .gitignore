@@ -1,3 +1,5 @@
-/raw_train_df.csv
-/normalized_train_df.csv
-/scored_train_df.csv
+# Ignore Mac system files
+.DS_store
+
+# Ignore data files
+*.csv

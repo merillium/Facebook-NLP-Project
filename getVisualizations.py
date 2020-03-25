@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly.graph_objects as go
 
-input_file = 'scored_train_df.csv'
+input_file = './data/scored_df.csv'
 
 scored_df = pd.read_csv(input_file, encoding='utf-8')
 
@@ -21,3 +21,6 @@ fig.update_layout(
 )
 
 fig.show()
+
+# number of words in each post
+# scored_df.text.apply(lambda x: len(x.split()))

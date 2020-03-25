@@ -21,6 +21,8 @@ from facebook_scraper import get_posts
 ## we will keep the text, the image to determine whether the post contained an image or not
 ## and we will keep likes, comments, and shares to gauge popularity 
 
+output_file = './data/raw_df.csv'
+
 def build_train_data(num_pages):
 	# each post is in the form of a dict
 	for index, post in enumerate(get_posts('natgeo', pages = num_pages, sleep = 5)):
@@ -34,5 +36,5 @@ def build_train_data(num_pages):
 # the field 'text' = 'post_text' + 'shared_text'...
 # ... but these fields need to be cleaned up first 
 
-train_df = build_train_data(100)
-train_df.to_csv('raw_train_df.csv', index = False, encoding='utf-8')
+train_df = build_train_data(200)
+train_df.to_csv(output_file, index = False, encoding='utf-8')

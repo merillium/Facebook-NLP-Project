@@ -4,7 +4,8 @@ from afinn import Afinn
 from textblob import TextBlob
 
 # import normalized training data
-input_file = 'normalized_train_df.csv'
+input_file = './data/normalized_df.csv'
+output_file = './data/scored_df.csv'
 
 normalized_train_df = pd.read_csv(input_file, encoding='utf-8')
 
@@ -16,5 +17,4 @@ def get_sentiment_scores(train_df):
 	return train_df
 
 scored_train_df = get_sentiment_scores(normalized_train_df)
-scored_train_df.to_csv('scored_train_df.csv', index = False, encoding='utf-8')
-
+scored_train_df.to_csv(output_file, index = False, encoding='utf-8')
