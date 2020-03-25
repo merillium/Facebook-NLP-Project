@@ -20,6 +20,6 @@
 ##### Metrics
 ###### Work in progress, check back for updates! 
 
-###### This project was made possible by all of the helpful NLP resources out there!
-[1] DJ Sarkar's article: [**A Practitioner's Guide to Natural Language Processing (Part I) — Processing & Understanding Text**](https://towardsdatascience.com/a-practitioners-guide-to-natural-language-processing-part-i-processing-understanding-text-9f4abfd13e72) 
-[2] Kevin Zuniga's respository and library: [Facebook Scraper](https://github.com/kevinzg/facebook-scraper)
+##### This project was made possible by all of the helpful NLP resources out there!
+###### [1] DJ Sarkar's article: [**A Practitioner's Guide to Natural Language Processing (Part I) — Processing & Understanding Text**](https://towardsdatascience.com/a-practitioners-guide-to-natural-language-processing-part-i-processing-understanding-text-9f4abfd13e72) 
+###### [2] Kevin Zuniga's respository and library: [Facebook Scraper](https://github.com/kevinzg/facebook-scraper)
