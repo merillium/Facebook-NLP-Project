@@ -12,13 +12,16 @@
 #### Data Preprocessing
 ###### I applied several preprocessing/normalizing steps to each post in the raw dataframe [1]: removing punctuation, expanding contractions, replacing numbers with text. Lemmatizing can be performed, but might hurt the performance of the AFinn Sentiment Lexicon used later to score the sentiment of each individual post.
 
-#### Data Analysis
+#### Exploratory Data Analysis
 ###### After all the posts were normalized, they were scored using the AFinn Sentiment Lexicon. The goal is to determine what relationship exists between the scores of each post and its popularity. Based on the scraped data, (number of likes, number of comments, and number of shares) are the measures of popularity, but since *only* likes could be extracted and not the full range of possible reactions (like, love, haha, sad, angry, wow), then using likes to measure popularity could be misleading (i.e. a post with 1000 like reacts and 5000 love reacts would be more popular than a post with 2000 like reacts and 1000 love reacts, but the number of likes alone would not reflect this).
 
 ###### Therefore, I will use the number of shares as a measure of popularity.
 
-#### Metrics
-###### Work in progress, check back for updates! 
+###### Plotly Diagrams can be viewed on the [project section of my webpage](https://www.derekoconn.com/projects/predicting-facebook-post-popularity).
+
+###### Currently, there seems to be a small inverse relationship between the score and the distribution of shares. A preliminary boxplot indicates that Facebook posts with negative sentiment (score < -1.0) get more shares than relatively neutral sentiment (-1.0 ≤ score ≤ 1.0), which get more shares than posts with positive sentiment (score > 1.0). However, this is inconclusive and there are numerous posts that do not follow this relationship.
+
+**Work in progress, check back for updates!**
 
 ##### This project was made possible by all of the helpful NLP resources out there!
 ###### [1] DJ Sarkar's article: [**A Practitioner's Guide to Natural Language Processing (Part I) — Processing & Understanding Text**](https://towardsdatascience.com/a-practitioners-guide-to-natural-language-processing-part-i-processing-understanding-text-9f4abfd13e72) 
