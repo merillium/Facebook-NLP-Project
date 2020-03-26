@@ -7,6 +7,11 @@ import chart_studio.tools as tls
 
 input_file = './data/scored_df.csv'
 
+## NOTE: anyone using this will need to make their own text file: 
+# 'chart_studio_info.txt' saved in the highest directory
+# username goes on line 1, API key goes on line 2
+user_info_file = 'chart_studio_info.txt'
+
 scored_df = pd.read_csv(input_file, encoding='utf-8')
 
 ## the following is a work around for wrapping text in the hovertemplate
@@ -16,8 +21,12 @@ scored_df.text = scored_df.text.apply(lambda x: x.replace('\n', '<br>'))
 def upload_to_chart_studio(fig, filename):
 	# push to chart_studio account
 	# regenerate api key if necessary
-	username = 'merillium'
-	api_key = 'h77FweXgesm2d6rMqjfa'
+
+	# private information stored locally:
+	f = open(user_info_file, 'r')
+	userinfo = f.read().split()
+	f.close()
+	username, api_key = userinfo 
 
 	chart_studio.tools.set_credentials_file(username=username, api_key=api_key)
 	ch_py.plot(fig, filename = filename, auto_open = True)
@@ -43,18 +52,45 @@ def create_scatter():
 	upload_to_chart_studio(fig, 'score_vs_popularity')
 
 # Box plot of shares separated by positive, neutral, negative score
-def create_boxplot():
+def create_boxplot(lower_score, upper_score):
 	fig = go.Figure()
-	fig.add_trace(go.Box(y = scored_df.shares[scored_df.score < 0], name = 'Negative Scores'))
-	fig.add_trace(go.Box(y = scored_df.shares[scored_df.score == 0], name = 'Neutral Scores'))
-	fig.add_trace(go.Box(y = scored_df.shares[scored_df.score > 0], name = 'Positive Scores'))
+	fig.add_trace(go.Box(y = scored_df.shares[scored_df.score < lower_score], 
+		name = 'Scores < ' + str(lower_score) + '<br>n = ' + str(scored_df.shares[scored_df.score < lower_score].count())))
+	fig.add_trace(go.Box(y = scored_df.shares[scored_df.score.between(lower_score, upper_score)],
+		name = str(lower_score) + ' < Scores < ' + str(upper_score) + '<br>n = ' 
+		+ str(scored_df.shares[scored_df.score.between(lower_score, upper_score)].count())))
+	fig.add_trace(go.Box(y = scored_df.shares[scored_df.score > upper_score], 
+		name = 'Scores > ' + str(upper_score) + '<br>n = ' + str(scored_df.shares[scored_df.score > upper_score].count())))
+	fig.update_layout(
+		yaxis_title = 'Number of Shares',
+		showlegend = False
+	)
+	# fig.show()
+	# upload_to_chart_studio(fig, 'score_vs_popularity')
+
+def create_violinplot(lower_score, upper_score):
+	fig = go.Figure()
+	fig.add_trace(go.Violin(y = scored_df.shares[scored_df.score < lower_score], 
+		name = 'Scores < ' + str(lower_score) + '<br>n = ' + str(scored_df.shares[scored_df.score < lower_score].count())))
+	fig.add_trace(go.Violin(y = scored_df.shares[scored_df.score.between(lower_score, upper_score)],
+		name = str(lower_score) + ' < Scores < ' + str(upper_score) + '<br>n = ' 
+		+ str(scored_df.shares[scored_df.score.between(lower_score, upper_score)].count())))
+	fig.add_trace(go.Violin(y = scored_df.shares[scored_df.score > upper_score], 
+		name = 'Scores >' + str(upper_score) + '<br>n = ' + str(scored_df.shares[scored_df.score > upper_score].count())))
+	fig.update_layout(
+		yaxis_title = 'Number of Shares',
+		showlegend = False
+	)
 	fig.show()
+	# upload_to_chart_studio(fig, 'score_vs_popularity')
+
 # other visualizations to consider:
 
 # number of words in each post
 # scored_df.text.apply(lambda x: len(x.split()))
 
-create_scatter()
-# create_boxplot()
+# create_scatter()
+# create_boxplot(-1,1)
+# create_violinplot(-1,1)
 
 
