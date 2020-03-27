@@ -17,7 +17,7 @@
 
 ###### Therefore, I will use the number of shares as a measure of popularity.
 
-###### Plotly Diagrams can be viewed on the [project section of my webpage](https://www.derekoconn.com/projects/predicting-facebook-post-popularity).
+###### Interactive Plotly Diagrams can be viewed on the [project section of my webpage](https://www.derekoconn.com/projects/predicting-facebook-post-popularity).
 
 ###### Currently, there seems to be a small inverse relationship between the score and the distribution of shares. A preliminary boxplot indicates that Facebook posts with negative sentiment (score < -1.0) get more shares than relatively neutral sentiment (-1.0 ≤ score ≤ 1.0), which get more shares than posts with positive sentiment (score > 1.0). However, this is inconclusive and there are numerous posts that do not follow this relationship.
 
