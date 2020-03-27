@@ -21,6 +21,8 @@
 
 ###### Currently, there seems to be a small inverse relationship between the score and the distribution of shares. A preliminary boxplot indicates that Facebook posts with negative sentiment (score < -1.0) get more shares than relatively neutral sentiment (-1.0 ≤ score ≤ 1.0), which get more shares than posts with positive sentiment (score > 1.0). However, this is inconclusive and there are numerous posts that do not follow this relationship.
 
+![boxplot image](https://github.com/merillium/Facebook-NLP-Project/blob/master/images/boxplot_score_shares.png)
+
 ##### *Work in progress, check back for updates!*
 
 ##### This project was made possible by all of the helpful NLP resources out there!
