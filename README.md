@@ -1,11 +1,19 @@
 ## Facebook NLP Project
+
+#### Run the following commands in order:
+###### python3 getPosts.py --> scrapes first 200 pages of NatGeo posts from Facebook, creates raw_df.csv under /data
+###### python3 normalizePosts.py --> normalizes the Facebook posts within the df, creates normalized_df.csv under /data
+###### python3 makeAnimalDict.py --> scrapes encyclopedic animal webpage for list of animals names assigning each name a score of 1.0 on the same scale as the sentiment score, creates .pickle file
+###### python3 getSentiment.py --> calculates sentiment score and overall score for Facebook posts, saves as scored_df.csv under /data
+###### python3 getVisualizations.py --> creates multi-scatter and multi-boxplot visualizations for number of shares vs. both sentiment score and overall score
+
 #### The Research Question
 ###### The goal of this project is to use natural language processing (NLP) to score the sentiment for posts on the [National Geographic Facebook Page](https://www.facebook.com/natgeo), and use this feature along with other information about each post to predict its popularity.
 
 ###### There are a few interesting applications for this project: a Facebook group admin could use this model to choose between publishing multiple posts (by comparing the popularity of one pending post to another), or a competing Facebook groups could run the model on the competitor’s content, and try to create content that competes for popularity with the other group's posts.
 
 #### Data Collection
-###### In order to obtain the text for each post, as well as the relevant metrics for popularity (number of likes, number of comments, number of shares), I used Kevin Zuniga's library to scrape public facebook pages without an API key [2] , and retreived the first 100 pages worth of posts from the National Geographic Facebook Page to use as a training set. 
+###### In order to obtain the text for each post, as well as the relevant metrics for popularity (number of likes, number of comments, number of shares), I used Kevin Zuniga's library to scrape public facebook pages without an API key [2] , and retreived the first 200 pages worth of posts from the National Geographic Facebook Page to use as a training set.
 
 ###### Running getPosts.py stores the scraped data in a file called 'raw_train_df.csv' under the /data folder
 
@@ -13,7 +21,9 @@
 ###### I applied several preprocessing/normalizing steps to each post in the raw dataframe [1]: removing punctuation, expanding contractions, replacing numbers with text. Lemmatizing can be performed, but might hurt the performance of the AFinn Sentiment Lexicon used later to score the sentiment of each individual post.
 
 #### Exploratory Data Analysis
-###### After all the posts were normalized, they were scored using the AFinn Sentiment Lexicon. However, I created an *overall score* that takes the mention of animals into account. To do this, I created a lexicon of animal names by scraping a [webpage](https://a-z-animals.com/animals/) listing common animals. Any neutral or already positive Facebook posts that also mentioned animals were assigned additional points, and any already negative Facebook posts that also mentioned animals were docked additional points. This is based on my assumption that a post with an already negative sentiment (i.e. I hate something) would be even more negative if they also mentioned animals (i.e. I hate small kittens).
+###### After all the posts were normalized, they were scored using the AFinn Sentiment Lexicon. However, I created an *overall score* that takes the mention of animals into account. To do this, I created a lexicon of animal names by scraping a [webpage](https://a-z-animals.com/animals/) listing common animals. 
+
+###### Any neutral or already positive Facebook posts that also mentioned animals were assigned additional points, and any already negative Facebook posts that also mentioned animals were docked additional points. This is based on my assumption that a post with an already negative sentiment (i.e. I hate something) would be even more negative if they also mentioned animals (i.e. I hate small kittens).
 
 ###### With scoring out of the way, how to measure popularity? Likes sound good, but they are unreliable because they do not account for the full range of reacts on Facebook posts (like, love, haha, wow, sad, angry): a post with 1,000 like and 9,000 love reacts is in reality more popular than a post with 5,000 like and 1,000 love reacts. 
 
