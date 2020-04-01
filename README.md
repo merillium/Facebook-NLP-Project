@@ -21,12 +21,11 @@
 
 ###### Interactive Plotly Diagrams can be viewed on the [project section of my webpage](https://www.derekoconn.com/projects/predicting-facebook-post-popularity).
 
-###### Currently, there seems to be a small inverse relationship between the score and the distribution of shares. A preliminary boxplot indicates that Facebook posts with negative sentiment (score < -1.0) get more shares than relatively neutral sentiment (-1.0 ≤ score ≤ 1.0), which get more shares than posts with positive sentiment (score > 1.0).
+![boxplot image](https://github.com/merillium/Facebook-NLP-Project/blob/master/images/multi_boxplot_scores.png)
 
-![boxplot image](https://github.com/merillium/Facebook-NLP-Project/blob/master/images/boxplot_score_shares.png)
+###### Using the Sentiment Score, Facebook posts with negative sentiment (score < -1.0) get more shares than relatively neutral sentiment (-1.0 ≤ score ≤ 1.0), which get more shares than posts with positive sentiment (score > 1.0).
 
 ###### However, the trend changes when looking at the *overall score*: Facebook posts with relatively neutral scores (-1.0 ≤ score ≤ 1.0) are shared less than Facebook posts with negative (score < -1.0) or positive (score > -1.0) overall scores. This is more in line with what we would expect intuitively, but we also need to be careful about remaining unbiased in our analysis. 
-![boxplot image](https://github.com/merillium/Facebook-NLP-Project/blob/master/images/boxplot_overall_score_shares.png)
 
 ##### *Work in progress, check back for updates!*
 
