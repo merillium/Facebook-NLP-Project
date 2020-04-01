@@ -1,7 +1,7 @@
 ## Facebook NLP Project
 
 #### Run the following commands in order:
-###### **python3 getPosts.py** --> scrapes first 200 pages of NatGeo posts from Facebook, creates raw_df.csv under /data
+###### __python3 getPosts.py__ --> scrapes first 200 pages of NatGeo posts from Facebook, creates raw_df.csv under /data
 ###### **python3 normalizePosts.py** --> normalizes the Facebook posts within the df, creates normalized_df.csv under /data
 ###### **python3 makeAnimalDict.py** --> scrapes encyclopedic animal webpage for list of animals names assigning each name a score of 1.0 on the same scale as the sentiment score, creates .pickle file
 ###### **python3 getSentiment.py** --> calculates sentiment score and overall score for Facebook posts, saves as scored_df.csv under /data
