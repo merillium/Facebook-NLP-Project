@@ -1,11 +1,11 @@
 ## Facebook NLP Project
 
 #### Run the following commands in order:
-###### python3 getPosts.py --> scrapes first 200 pages of NatGeo posts from Facebook, creates raw_df.csv under /data
-###### python3 normalizePosts.py --> normalizes the Facebook posts within the df, creates normalized_df.csv under /data
-###### python3 makeAnimalDict.py --> scrapes encyclopedic animal webpage for list of animals names assigning each name a score of 1.0 on the same scale as the sentiment score, creates .pickle file
-###### python3 getSentiment.py --> calculates sentiment score and overall score for Facebook posts, saves as scored_df.csv under /data
-###### python3 getVisualizations.py --> creates multi-scatter and multi-boxplot visualizations for number of shares vs. both sentiment score and overall score
+###### **python3 getPosts.py** --> scrapes first 200 pages of NatGeo posts from Facebook, creates raw_df.csv under /data
+###### **python3 normalizePosts.py** --> normalizes the Facebook posts within the df, creates normalized_df.csv under /data
+###### **python3 makeAnimalDict.py** --> scrapes encyclopedic animal webpage for list of animals names assigning each name a score of 1.0 on the same scale as the sentiment score, creates .pickle file
+###### **python3 getSentiment.py** --> calculates sentiment score and overall score for Facebook posts, saves as scored_df.csv under /data
+###### **python3 getVisualizations.py** --> creates multi-scatter and multi-boxplot visualizations for number of shares vs. both sentiment score and overall score
 
 #### The Research Question
 ###### The goal of this project is to use natural language processing (NLP) to score the sentiment for posts on the [National Geographic Facebook Page](https://www.facebook.com/natgeo), and use this feature along with other information about each post to predict its popularity.
