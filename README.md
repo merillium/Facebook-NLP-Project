@@ -25,13 +25,15 @@
 
 ###### Any neutral or already positive Facebook posts that also mentioned animals were assigned additional points, and any already negative Facebook posts that also mentioned animals were docked additional points. This is based on my assumption that a post with an already negative sentiment (i.e. I hate something) would be even more negative if they also mentioned animals (i.e. I hate small kittens).
 
-###### With scoring out of the way, how to measure popularity? Likes sound good, but they are unreliable because they do not account for the full range of reacts on Facebook posts (like, love, haha, wow, sad, angry): a post with 1,000 like and 9,000 love reacts is in reality more popular than a post with 5,000 like and 1,000 love reacts. 
+###### With scoring out of the way, how to measure popularity? Likes seem like a good metric, but they are unreliable because they do not account for the full range of reacts on Facebook posts (like, love, haha, wow, sad, angry). For example, a post with 1,000 like and 9,000 love reacts is in reality more popular than a post with 5,000 like and 1,000 love reacts, but counting likes alone would give us the opposite result. 
 
 ###### Therefore, I will use the number of shares as a measure of popularity.
 
 ###### Interactive Plotly Diagrams can be viewed on the [project section of my webpage](https://www.derekoconn.com/projects/predicting-facebook-post-popularity).
 
-![boxplot image](https://github.com/merillium/Facebook-NLP-Project/blob/master/images/multi_boxplot_scores.png)
+![multi-scatterplot image](https://github.com/merillium/Facebook-NLP-Project/blob/master/images/multi_scatterplot_scores.png)
+
+![multi-boxplot image](https://github.com/merillium/Facebook-NLP-Project/blob/master/images/multi_boxplot_scores.png)
 
 ###### Using the Sentiment Score, Facebook posts with negative sentiment (score < -1.0) get more shares than relatively neutral sentiment (-1.0 ≤ score ≤ 1.0), which get more shares than posts with positive sentiment (score > 1.0).
 
