@@ -43,6 +43,7 @@ def pluralize_list(singular_list):
 pluralize_list(animal_list)
 # assign each animal a score of 2.0 (on a scale of 1.0-5.0)
 animal_dict = {key: 1.0 for key in animal_list}
+print("Animal terminology dictionary created.")
 
 # Store data in HIGHEST_PROTOCOL smallest format
 with open('./dictionaries/animal_dict.pickle', 'wb') as handle:

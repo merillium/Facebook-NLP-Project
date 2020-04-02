@@ -46,6 +46,9 @@ def get_overall_scores(train_df):
 	train_df.insert(0, 'overall_score', value = train_df['score'] + train_df['animal_score'])
 	return train_df
 
+print("Calculating sentiment score of Facebook Posts...")
 scored_train_df = get_sentiment_scores(normalized_train_df)
+print("Calculating overall score of Facebook Posts...")
 scored_train_df = get_overall_scores(scored_train_df)
+
 scored_train_df.to_csv(output_file, index = False, encoding='utf-8')

@@ -27,7 +27,7 @@ def build_train_data(num_pages):
 	# each post is in the form of a dict
 	for index, post in enumerate(get_posts('natgeo', pages = num_pages, sleep = 5)):
 		if index == 0:
-			print('creating training data... ')
+			print('Scraping the NatGeo Facebook page, and creating training data... ')
 			train_df = pd.DataFrame(post, index = [0])
 		else:
 			train_df = train_df.append(pd.DataFrame(post, index = [0]), ignore_index = True)

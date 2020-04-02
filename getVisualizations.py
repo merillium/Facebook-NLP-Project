@@ -49,8 +49,8 @@ def create_scatter(score_type, figname, x_title, title, color = 'blue'):
 		yaxis_title = "Number of Shares",
 		autosize = True
 	)
-	# fig.show()
-	upload_to_chart_studio(fig, figname)
+	fig.show()
+	# upload_to_chart_studio(fig, figname)
 
 def create_multi_scatter(figname, title):
 	fig = go.Figure()
@@ -152,8 +152,8 @@ def create_multi_boxplot(lower_score, upper_score, title, figname):
 		boxmode = 'group'
 	)
 
-	# fig.show()
-	upload_to_chart_studio(fig, figname)
+	fig.show()
+	# upload_to_chart_studio(fig, figname)
 
 def create_violinplot(score_type, lower_score, upper_score, title, figname):
 	layout = go.Layout(yaxis=dict(range=[0, 6000]))
@@ -203,13 +203,16 @@ def create_violinplot(score_type, lower_score, upper_score, title, figname):
 #	title = 'Number of Shares vs. Overall Score for National Geographic Facebook Posts',
 #	figname = 'overall_score_violinplot')
 
-create_multi_boxplot(
-	lower_score = -1, upper_score = 1, 
-	title = 'Number of Shares vs. Scores for National Geographic Facebook Posts',
-	figname = 'all_scores_boxplot'
-)
+print("Creating multi-scatterplot of shares vs. sentiment score / overall score...")
+print("Creating multi-boxplot of shares vs. sentiment score / overall score...")
 
 create_multi_scatter(
 	title = 'Number of Shares vs. Scores for National Geographic Facebook Posts',
 	figname = 'shares_vs_overall_score'
+)
+
+create_multi_boxplot(
+	lower_score = -1, upper_score = 1, 
+	title = 'Number of Shares vs. Scores for National Geographic Facebook Posts',
+	figname = 'all_scores_boxplot'
 )

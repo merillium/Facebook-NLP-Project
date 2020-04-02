@@ -21,7 +21,7 @@ def change_stopwords(words_list = words_list_keep):
 	for word in words_list:
 		try:
 			stopword_list.remove(word) 
-			print(word, 'removed from stopwords list')
+			# print(word, 'removed from stopwords list')
 		except:
 			continue
 
@@ -125,13 +125,17 @@ train_df['image'] = train_df['image'].apply(lambda x: 0 if x == '' else 1)
 
 # print('raw expression', train_df.text[139])
 # normalize text: remove quotes THEN expand contractions, remove special characters and stopwords
+print('Normalizing Facebook Post text...')
+print('Removing quotation symbols...')
 train_df['text'] = train_df['text'].apply(lambda x: fix_quotes(x))
-print('after removing quotes...')
+# print('after removing quotation symbols...')
 # test = train_df.text[139]
+print('Expanding contractions...')
 train_df['text'] = train_df['text'].apply(lambda x: expand_contractions(x))
-print('after expanding contractions...')
+# print('after expanding contractions...')
+print('Removing special characters...')
 train_df['text'] = train_df['text'].apply(lambda x: remove_special_characters(x))
-print('removing special characters...')
+# print('removing special characters...')
 
 ## reposts with duplicate text may need to be removed: take the average of likes, comments, shares
 
