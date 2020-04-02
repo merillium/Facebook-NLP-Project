@@ -1,7 +1,9 @@
 ## Facebook NLP Project
 
 #####  Run the following command in terminal:
-##### python3 main.py --> scrapes Facebook NatGeo posts, normalizes post text, scrapes encyclopedic animal webpage to create dictionary of animal terms, calculates sentiment score and overall score for posts, creates visualizatins.
+##### python3 main.py
+
+###### This scrapes Facebook NatGeo posts, normalizes post text, scrapes encyclopedic animal webpage to create dictionary of animal terms, calculates sentiment score and overall score for posts, and creates visualizations.
 
 #### The Research Question
 ###### The goal of this project is to use natural language processing (NLP) to score the sentiment for posts on the [National Geographic Facebook Page](https://www.facebook.com/natgeo), and use this feature along with other information about each post to predict its popularity.
