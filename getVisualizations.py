@@ -184,7 +184,7 @@ def create_violinplot(score_type, lower_score, upper_score, title, figname):
 #	x_title = 'Sentiment Score',
 #	title = "Number of Shares vs. Sentiment Score for National Geographic Facebook Posts"
 #)
-#create_scatter(score_type = 'overall_score', 
+# create_scatter(score_type = 'overall_score', 
 #	figname = 'shares_vs_overall_score', 
 #	x_title = 'Overall Score',
 #	title = "Number of Shares vs. Overall Score for National Geographic Facebook Posts", 
@@ -194,7 +194,7 @@ def create_violinplot(score_type, lower_score, upper_score, title, figname):
 #	title = 'Number of Shares vs. Sentiment Score for National Geographic Facebook Posts', 
 #	figname = 'sentiment_score_boxplot'
 #)
-#create_boxplot(score_type = 'overall_score', lower_score = -1, upper_score = 1, 
+# create_boxplot(score_type = 'overall_score', lower_score = -1, upper_score = 1, 
 #	title = 'Number of Shares vs. Overall Score for National Geographic Facebook Posts',
 #	figname = 'overall_score_boxplot'
 #)
